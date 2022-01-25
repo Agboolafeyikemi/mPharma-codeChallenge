@@ -1,0 +1,18 @@
+@media screen and (min-width: 400px) {
+  .prod {
+    background-color: white;
+    margin: 0 auto;
+    height: 500px;
+    width: 1000px;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .prod {
+    background-color: white;
+    margin: 0 auto;
+    height: 400px;
+    width: 90%;
+  }
+}
