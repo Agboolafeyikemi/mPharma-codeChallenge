@@ -1,16 +1,16 @@
-import React from "react";
-import { alpha, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
-import { makeLowercase } from "../HelperFunctions/HelperFunctions";
+import React from 'react'
+import { alpha, makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import InputBase from '@material-ui/core/InputBase'
+import Menu from '@material-ui/core/Menu'
+import MenuIcon from '@material-ui/icons/Menu'
+import SearchIcon from '@material-ui/icons/Search'
+import Button from '@material-ui/core/Button'
+import AddIcon from '@material-ui/icons/Add'
+import { makeLowercase } from '../HelperFunctions/HelperFunctions'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -20,111 +20,108 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
     },
   },
   search: {
-    position: "relative",
+    position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
+    '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      width: "auto",
+      width: 'auto',
     },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inputRoot: {
-    color: "inherit",
+    color: 'inherit',
   },
 
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-
+    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
     },
   },
   sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
     },
   },
   sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
     },
   },
-}));
+}))
 
-export default function NavBar({
-  setProducts,
-  handleAddProductModal,
-  liveData,
-}) {
-  const classes = useStyles();
+export default function NavBar({ setProducts, handleAddProductModal, liveData }) {
+  const classes = useStyles()
 
-  const searchRef = React.useRef(null);
+  const searchRef = React.useRef(null)
+  // let x = searchRef.current
+  // console.log({ x })
 
-
-  const initialData = [...liveData];
-  let filteredItems = [];
+  const initialData = [...liveData]
+  //console.log('Live data:', initialData)
+  let filteredItems = []
 
   const handleFilterItems = (e) => {
     if (e.target.value.length < 1) {
-      setProducts(initialData);
+      setProducts(initialData)
     } else {
       filteredItems = liveData.filter((item) =>
         makeLowercase(item.name).includes(makeLowercase(e.target.value))
-      );
-      setProducts(filteredItems);
+      )
+      setProducts(filteredItems)
     }
-  };
+  }
 
-  const menuId = "primary-search-account-menu";
+  const menuId = 'primary-search-account-menu'
   const renderMenu = (
     <Menu
-      open={setProducts}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
     ></Menu>
-  );
+  )
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar style={{ backgroundColor: "#ff5100" }}>
+      <AppBar position='static'>
+        <Toolbar style={{ backgroundColor: '#ff5100' }}>
           <IconButton
-            edge="start"
+            edge='start'
             className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
+            color='inherit'
+            aria-label='open drawer'
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant='h6' noWrap>
             mPharma
           </Typography>
           <div className={classes.search}>
@@ -136,30 +133,30 @@ export default function NavBar({
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{ "aria-label": "search" }}
+              inputProps={{ 'aria-label': 'search' }}
               autoFocus
-              placeholder="Search product…"
+              placeholder='Search product…'
               onInput={handleFilterItems}
               ref={searchRef}
             />
           </div>
           <div className={classes.grow} />
           <Button
-            title="Add Product"
-            variant="contained"
-            color="secondary"
+            title = 'Add Product'
+            variant='contained'
+            color='secondary'
             onClick={handleAddProductModal}
             style={{
-              marginRight: "10px",
-              backgroundColor: "#fecece",
-              color: "black",
+              marginRight: '10px',
+              backgroundColor: '#fecece',
+              color: 'black',
             }}
           >
-            <AddIcon /> Add
+            <AddIcon/> Add 
           </Button>
         </Toolbar>
       </AppBar>
       {renderMenu}
     </div>
-  );
+  )
 }
