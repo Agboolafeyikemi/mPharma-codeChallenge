@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import App from "./App";
+
 import AddModal from "./components/AddModal";
 import {
   multiply,
@@ -18,9 +18,6 @@ it("checkAddModalRender", () => {
   const { queryByTitle } = render(<AddModal />);
   const linkElement = screen.getByText("Add Product");
   expect(linkElement).toBeInTheDocument();
-  // const productName = queryByTitle('productName')
-  // console.log(productName)
-  //expect(productName).toBeTruthy();
 });
 
 describe("clickSaveButton", () => {
