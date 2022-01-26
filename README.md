@@ -22,4 +22,4 @@ Launches the test runner in the interactive watch mode.\
 
 ### Deployment
 
-project has already been deployed to Netlify. Find below the url:
+project has already been deployed to Netlify. Find below the url: https://61f18d09603b5af8d734cb02--dreamy-meninsky-2043ce.netlify.app/
