@@ -25,10 +25,6 @@ function App() {
   const [hideSave, setHideSave] = useState(false);
   const [toastrMessage, setToastMessage] = useState("Notification");
 
-  //const dispatch = useDispatch()
-  //const seedData = useSelector(state => products)
-  //console.log("Seed Data:" , seedData)
-
   const getData = async () => {
     try {
       const result = await fetch(
