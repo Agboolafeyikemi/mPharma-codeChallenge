@@ -2,13 +2,11 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Products from "./components/Products";
 import React, { useState, useEffect } from "react";
-// import axios from 'axios'
 import Loader from "./components/Loader";
 import AddModal from "./components/AddModal";
 import ConfirmationModal from "./components/ConfirmationModal";
 import Toastify from "./components/Toastify";
 import { toast } from "react-toastify";
-//import { useSelector, useDispatch } from 'react-redux'
 
 let initData = [];
 
@@ -45,7 +43,6 @@ function App() {
         console.log("FormattedData:", formattedData);
         //setting copy of init data to liveData for search implementation
         setLiveData(initData);
-        //setLiveData(seedData)
 
         //cacheing in memory for offline use
         localStorage.setItem("initData", JSON.stringify(initData));
@@ -63,27 +60,6 @@ function App() {
       setProducts(JSON.parse(offlineData));
       console.log(error);
     }
-
-    // axios
-    //   .get('http://www.mocky.io/v2/5c3e15e63500006e003e9795')
-    //   .then((res) => {
-    //     //console.log('Data:', res.data.products)
-    //     res.data.products.map((item) => {
-    //   let newObj = {
-    //     id: item.id,
-    //     name: item.name,
-    //     currentPrice: item.prices[0].price,
-    //     prevPrice: item.prices[1].price,
-    //   }
-    //   initData.push(newObj)
-    // })
-    //     console.log(initData)
-    //     setProducts(initData)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-    //   .finally(console.log('done'))
   };
 
   useEffect(() => {
@@ -166,7 +142,6 @@ function App() {
       ) : (
         <Products
           products={products}
-          //products={payload}
           setOpen={setOpen}
           modalTitle={modalTitle}
           setModalTitle={setModalTitle}
@@ -186,7 +161,6 @@ function App() {
         handleAddProductModal={handleAddProductModal}
         open={open}
         products={products}
-        //products={payload}
         setProducts={setProducts}
         setOpen={setOpen}
         data={initData}

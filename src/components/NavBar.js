@@ -85,11 +85,9 @@ export default function NavBar({
   const classes = useStyles();
 
   const searchRef = React.useRef(null);
-  // let x = searchRef.current
-  // console.log({ x })
+
 
   const initialData = [...liveData];
-  //console.log('Live data:', initialData)
   let filteredItems = [];
 
   const handleFilterItems = (e) => {
